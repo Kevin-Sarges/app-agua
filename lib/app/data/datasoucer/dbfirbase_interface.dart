@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 abstract class IDbFirebase {
-  void quantidadeEstoue();
+  Stream<QuerySnapshot<Map<String, dynamic>>> quantidadeEstoue();
   Future<void> encomendaAgua(
     String nome,
     String telefone,

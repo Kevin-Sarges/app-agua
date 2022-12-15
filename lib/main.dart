@@ -1,3 +1,4 @@
+import 'package:appaguaentregados/app/domain/inject/inject_dependency.dart';
 import 'package:appaguaentregados/app/main_app.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,6 +9,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
+  InjectDependency.init();
   runApp(const MainApp());
 }
