@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>369791620941-ouev11e6ellnf7j65686jevo8bi4tt0a.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.369791620941-ouev11e6ellnf7j65686jevo8bi4tt0a</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCykhiS-qEk7jpzfrhToF3HlhQHzQhAijQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>369791620941</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.appagua.appaguaentregados</string>
+	<key>PROJECT_ID</key>
+	<string>app-agua-7a484</string>
+	<key>STORAGE_BUCKET</key>
+	<string>app-agua-7a484.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:369791620941:ios:d4a88e691bd577a24fc904</string>
+</dict>
+</plist>
