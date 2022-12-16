@@ -1,9 +1,9 @@
-import 'package:appaguaentregados/app/data/datasoucer/dbfirbase_interface.dart';
 import 'package:appaguaentregados/app/domain/utils/colors_app.dart';
 import 'package:appaguaentregados/app/domain/utils/routes_app.dart';
 import 'package:appaguaentregados/app/presenter/global_widgets/ciruclar_progress_widget.dart';
 import 'package:appaguaentregados/app/presenter/view/home/controller/home_cubit.dart';
 import 'package:appaguaentregados/app/presenter/view/home/controller/home_state.dart';
+import 'package:appaguaentregados/app/presenter/view/home/widgets/loading_estoque.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +18,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final cubit = GetIt.I.get<HomeCubit>();
-  final controller = GetIt.I.get<IDbFirebase>();
 
   @override
   void initState() {
@@ -32,29 +31,22 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorsApp.blueLight,
-        body: BlocProvider(
-          create: (context) => HomeCubit(controller),
-          child: Column(
-            children: [
-              Container(
+        body: Column(
+          children: [
+            Expanded(
+              flex: 3,
+              child: Container(
                 height: 560,
                 decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      ColorsApp.bluePrimary,
-                      ColorsApp.blueSecondary,
-                    ],
-                  ),
+                  gradient: ColorsApp.linearGradientBlue,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(45),
                     bottomRight: Radius.circular(45),
                   ),
                 ),
                 child: Center(
-                  child: Wrap(
-                    direction: Axis.horizontal,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    spacing: 50,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(
                         width: 200,
@@ -112,9 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   );
                                 }
 
-                                return CircularProgressWidget(
-                                  color: ColorsApp.white,
-                                );
+                                return const LoadingQtdAgua();
                               },
                             );
                           }
@@ -126,44 +116,46 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 50,
-              ),
-              StreamBuilder<QuerySnapshot<Object?>>(
-                stream: cubit.estoque,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    final quantidade = snapshot.data?.docs.first;
+            ),
+            Expanded(
+              child: Center(
+                child: StreamBuilder<QuerySnapshot<Object?>>(
+                  stream: cubit.estoque,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      final quantidade = snapshot.data?.docs.first;
 
-                    return ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: ColorsApp.blueDarck,
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 9,
-                          horizontal: 54,
+                      return ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorsApp.blueDarck,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 9,
+                            horizontal: 54,
+                          ),
                         ),
-                      ),
-                      onPressed: quantidade!['quantidade'] <= 0
-                          ? null
-                          : () {
-                              Navigator.pushNamed(context, RoutesApp.infoUser);
-                            },
-                      child: const Text(
-                        'Compra água',
-                        style: TextStyle(
-                          fontSize: 16,
+                        onPressed: quantidade!['quantidade'] <= 0
+                            ? null
+                            : () {
+                                Navigator.pushNamed(
+                                    context, RoutesApp.infoUser);
+                              },
+                        child: const Text(
+                          'Compra água',
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
                         ),
-                      ),
+                      );
+                    }
+
+                    return CircularProgressWidget(
+                      color: ColorsApp.bluePrimary,
                     );
-                  }
-
-                  return CircularProgressWidget(
-                    color: ColorsApp.bluePrimary,
-                  );
-                },
+                  },
+                ),
               ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
