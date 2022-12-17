@@ -8,4 +8,5 @@ abstract class IDbFirebase {
     double lat,
     double lon,
   );
+  Future<void> salvandoLatLon(double lat, double lon);
 }
