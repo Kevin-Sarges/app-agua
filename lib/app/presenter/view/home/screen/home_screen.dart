@@ -1,5 +1,6 @@
 import 'package:appaguaentregados/app/domain/utils/colors_app.dart';
 import 'package:appaguaentregados/app/domain/utils/routes_app.dart';
+import 'package:appaguaentregados/app/presenter/global_widgets/button_app_widget.dart';
 import 'package:appaguaentregados/app/presenter/global_widgets/ciruclar_progress_widget.dart';
 import 'package:appaguaentregados/app/presenter/view/home/controller/home_cubit.dart';
 import 'package:appaguaentregados/app/presenter/view/home/controller/home_state.dart';
@@ -125,24 +126,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     if (snapshot.hasData) {
                       final quantidade = snapshot.data?.docs.first;
 
-                      return ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: ColorsApp.blueDarck,
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 9,
-                            horizontal: 54,
-                          ),
-                        ),
+                      return ButtonAppWidget(
                         onPressed: quantidade!['quantidade'] <= 0
                             ? null
                             : () {
                                 Navigator.pushNamed(
                                     context, RoutesApp.infoUser);
                               },
-                        child: const Text(
+                        text: const Text(
                           'Compra água',
                           style: TextStyle(
                             fontSize: 16,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorsApp.blueDarck,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 9,
+                            horizontal: 54,
                           ),
                         ),
                       );
