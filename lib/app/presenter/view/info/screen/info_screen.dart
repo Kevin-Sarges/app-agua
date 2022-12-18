@@ -29,6 +29,7 @@ class _InfoScreenState extends State<InfoScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Nome e Contato'),
+          backgroundColor: ColorsApp.bluePrimary,
         ),
         body: BlocListener<InfoCubit, InfoState>(
           listener: (context, state) {
