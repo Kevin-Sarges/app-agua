@@ -1,4 +1,5 @@
 import 'package:appaguaentregados/app/data/datasoucer/dbfirbase_interface.dart';
+import 'package:appaguaentregados/app/data/model/model_pedidos.dart';
 import 'package:appaguaentregados/app/presenter/view/info/controllers/info_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,16 +8,11 @@ class InfoCubit extends Cubit<InfoState> {
 
   final IDbFirebase service;
 
-  Future<void> salvarContato(
-    String nome,
-    String telefone,
-    double lat,
-    double lon,
-  ) async {
+  Future<void> salvarContato(ModelPedidos pedidos) async {
     emit(InfoLoading());
 
     try {
-      await service.encomendaAgua(nome, telefone, lat, lon);
+      await service.encomendaAgua(pedidos);
 
       emit(InfoSucess());
     } catch (e) {

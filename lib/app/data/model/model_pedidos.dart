@@ -3,14 +3,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ModelPedidos extends EntitiesPedidos {
   ModelPedidos({
-    required String nome,
+    required String nomeCliente,
     required String telefone,
     required double lat,
     required double lon,
     required bool finalizado,
     required String hora,
   }) : super(
-          nome: nome,
+          nomeCliente: nomeCliente,
           telefone: telefone,
           lat: lat,
           lon: lon,
@@ -22,7 +22,7 @@ class ModelPedidos extends EntitiesPedidos {
     final data = snapshot.data() as Map<String, dynamic>;
 
     return ModelPedidos(
-      nome: data['nome'] as String,
+      nomeCliente: data['nomeCliente'] as String,
       telefone: data['telefone'] as String,
       lat: data['lat'] as double,
       lon: data['lon'] as double,
@@ -33,10 +33,12 @@ class ModelPedidos extends EntitiesPedidos {
 
   Map<String, dynamic> toJson() {
     final data = {
-      'nome': nome,
+      'nomeCliente': nomeCliente,
       'telefone': telefone,
       'lat': lat,
       'lon': lon,
+      'finalizado': finalizado,
+      'hora': hora
     };
 
     return data;

@@ -1,5 +1,5 @@
 class EntitiesPedidos {
-  String nome;
+  String nomeCliente;
   String telefone;
   double lat;
   double lon;
@@ -7,7 +7,7 @@ class EntitiesPedidos {
   String hora;
 
   EntitiesPedidos({
-    required this.nome,
+    required this.nomeCliente,
     required this.telefone,
     required this.lat,
     required this.lon,
