@@ -39,81 +39,85 @@ class _InfoScreenState extends State<InfoScreen> {
             }
           },
           bloc: cubit,
-          child: Container(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 64,
-                ),
-                const Text(
-                  'Informe seu nome número para o entregador entra em contato com você caso seja necessario',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+          child: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 64,
                   ),
-                ),
-                const SizedBox(
-                  height: 54,
-                ),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      InputText(
-                        controller: _textControllerName,
-                        labelInput: const Text('Somente nome e sobrenome'),
-                        hintText: 'Ex: Kevin Sarges',
-                      ),
-                      InputText(
-                        controller: _textControllerPhone,
-                        labelInput: const Text('Número para contato'),
-                        hintText: 'Ex: 984279843',
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ButtonAppWidget(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      cubit.salvarContato(
-                        ModelPedidos(
-                          nomeCliente: _textControllerName.text,
-                          telefone: _textControllerPhone.text,
-                          lat: 0.0,
-                          lon: 0.0,
-                          finalizado: false,
-                          hora: DateTime.now().microsecond.toString(),
-                        ),
-                      );
-
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Salvando...'),
-                        ),
-                      );
-                    }
-                  },
-                  text: const Text(
-                    'Salvar informações',
+                  const Text(
+                    'Informe seu nome número para o entregador entra em contato com você caso seja necessario',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorsApp.blueDarck,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 96,
-                      vertical: 9,
+                  const SizedBox(
+                    height: 54,
+                  ),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        InputText(
+                          controller: _textControllerName,
+                          labelInput: const Text('Somente nome e sobrenome'),
+                          hintText: 'Ex: Kevin Sarges',
+                          keyboardType: TextInputType.text,
+                        ),
+                        InputText(
+                          controller: _textControllerPhone,
+                          labelInput: const Text('Número para contato'),
+                          hintText: 'Ex: 984279843',
+                          keyboardType: TextInputType.number,
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ButtonAppWidget(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        cubit.salvarContato(
+                          ModelPedidos(
+                            nomeCliente: _textControllerName.text,
+                            telefone: _textControllerPhone.text,
+                            lat: 0.0,
+                            lon: 0.0,
+                            finalizado: false,
+                            hora: DateTime.now().microsecond.toString(),
+                          ),
+                        );
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Salvo 🙂'),
+                          ),
+                        );
+                      }
+                    },
+                    text: const Text(
+                      'Salvar informações',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: ColorsApp.blueDarck,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 96,
+                        vertical: 9,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

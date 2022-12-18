@@ -8,11 +8,13 @@ class InputText extends StatelessWidget {
     required this.controller,
     required this.labelInput,
     required this.hintText,
+    required this.keyboardType,
   });
 
   TextEditingController? controller;
   Widget? labelInput;
   String hintText;
+  TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class InputText extends StatelessWidget {
         return null;
       },
       controller: controller,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
         label: labelInput,
         hintText: hintText,
