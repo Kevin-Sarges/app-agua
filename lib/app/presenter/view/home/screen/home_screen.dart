@@ -130,7 +130,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: quantidade!['quantidade'] <= 0
                             ? null
                             : () {
-                                Navigator.pushNamed(context, RoutesApp.map);
+                                Navigator.pushNamed(
+                                  context,
+                                  RoutesApp.infoUser,
+                                );
                               },
                         text: const Text(
                           'Compra água',
