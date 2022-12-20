@@ -40,6 +40,7 @@ class _MapScreenState extends State<MapScreen> {
           backgroundColor: ColorsApp.bluePrimary,
         ),
         body: BlocBuilder<MapCubit, MapState>(
+          bloc: cubit,
           builder: (context, state) {
             if (state is MapLoading) {
               return Center(
