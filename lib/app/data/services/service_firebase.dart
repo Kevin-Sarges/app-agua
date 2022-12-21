@@ -18,19 +18,4 @@ class ServiceFirebase implements IDbFirebase {
 
     return estoque;
   }
-
-  @override
-  Future<void> salvandoLatLon(double lat, double lon) {
-    final latLogAtt = {
-      'lat': lat,
-      'lon': lon,
-    };
-
-    final docId = db.collection('estoque').doc().id;
-
-    final atualizarEstoque =
-        db.collection('estoque').doc(docId).update(latLogAtt);
-
-    return atualizarEstoque;
-  }
 }

@@ -38,7 +38,7 @@ class ModelPedidos extends EntitiesPedidos {
       'lat': lat,
       'lon': lon,
       'finalizado': finalizado,
-      'hora': hora
+      'hora': hora,
     };
 
     return data;

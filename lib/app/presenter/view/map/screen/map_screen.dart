@@ -1,7 +1,9 @@
 // ignore_for_file: unused_field
 
 import 'package:appaguaentregados/app/domain/utils/colors_app.dart';
+import 'package:appaguaentregados/app/domain/utils/routes_app.dart';
 import 'package:appaguaentregados/app/presenter/global_widgets/ciruclar_progress_widget.dart';
+import 'package:appaguaentregados/app/presenter/global_widgets/floating_button_app_widget.dart';
 import 'package:appaguaentregados/app/presenter/view/map/controllers/map_cubit.dart';
 import 'package:appaguaentregados/app/presenter/view/map/controllers/map_state.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +38,7 @@ class _MapScreenState extends State<MapScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Confirme sua localize'),
+          title: const Text('Localização'),
           backgroundColor: ColorsApp.bluePrimary,
         ),
         body: BlocBuilder<MapCubit, MapState>(
@@ -57,18 +59,26 @@ class _MapScreenState extends State<MapScreen> {
             }
 
             if (state is MapSucess) {
-              return GoogleMap(
-                zoomControlsEnabled: true,
-                mapType: MapType.normal,
-                myLocationEnabled: true,
-                initialCameraPosition: CameraPosition(
-                  target: LatLng(
-                    state.lat,
-                    state.lon,
+              return Scaffold(
+                body: GoogleMap(
+                  zoomControlsEnabled: false,
+                  mapType: MapType.satellite,
+                  myLocationEnabled: true,
+                  initialCameraPosition: CameraPosition(
+                    target: LatLng(
+                      state.lat,
+                      state.lon,
+                    ),
+                    zoom: 18,
                   ),
-                  zoom: 20,
+                  onMapCreated: _onMapCreated,
                 ),
-                onMapCreated: _onMapCreated,
+                floatingActionButton: FloatingButtonAppWidget(
+                  label: 'Confirmar sua localização',
+                  onPressed: () {
+                    Navigator.pushNamed(context, RoutesApp.infoUser);
+                  },
+                ),
               );
             }
 

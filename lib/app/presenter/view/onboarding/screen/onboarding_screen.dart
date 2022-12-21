@@ -1,5 +1,6 @@
 import 'package:appaguaentregados/app/domain/utils/colors_app.dart';
 import 'package:appaguaentregados/app/domain/utils/routes_app.dart';
+import 'package:appaguaentregados/app/presenter/view/onboarding/widget/text_onboarding.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -16,10 +17,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       child: Scaffold(
         backgroundColor: ColorsApp.bluePrimary,
         body: Center(
-          child: Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            direction: Axis.vertical,
-            spacing: 40,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
                 'Dicas',
@@ -29,20 +29,39 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(
+                height: 40,
+              ),
               Image.asset(
                 'assets/images/garrafa-de-agua.png',
-                width: 200,
+                width: 100,
               ),
               const SizedBox(
-                width: 230,
-                child: Text(
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: ColorsApp.white,
-                    fontSize: 17,
-                  ),
+                height: 20,
+              ),
+              SizedBox(
+                width: 200,
+                child: Column(
+                  children: [
+                    TextOnboarding(
+                      text:
+                          '1. O app precisa de permissão para acessar a sua localização então não se esqueça de verificar a sua localização quando for comprar água no app.',
+                    ),
+                    const SizedBox(height: 10),
+                    TextOnboarding(
+                      text:
+                          '2. Informe seu nome e número, o entregador entrará em contato com você caso seja necessário.',
+                    ),
+                    const SizedBox(height: 10),
+                    TextOnboarding(
+                      text:
+                          '3. Caso tenha algum problema ou demora na entrega, você pode entra em contato direto com o fornecedor.',
+                    ),
+                  ],
                 ),
+              ),
+              const SizedBox(
+                height: 40,
               ),
               Container(
                 width: 55,

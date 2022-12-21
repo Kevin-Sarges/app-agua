@@ -8,7 +8,7 @@ class InfoCubit extends Cubit<InfoState> {
 
   final IDbFirebase service;
 
-  Future<void> salvarContato(ModelPedidos pedidos) async {
+  Future<void> salvarDadosUsuario(ModelPedidos pedidos) async {
     emit(InfoLoading());
 
     try {
