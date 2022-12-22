@@ -31,6 +31,7 @@ class _InfoScreenState extends State<InfoScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+          backgroundColor: ColorsApp.blueLight,
           appBar: AppBar(
             title: const Text('Nome e Contato'),
             backgroundColor: ColorsApp.bluePrimary,
