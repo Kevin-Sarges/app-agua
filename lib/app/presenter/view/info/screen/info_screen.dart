@@ -117,7 +117,8 @@ class _InfoScreenState extends State<InfoScreen> {
             ),
           ),
           floatingActionButton: FloatingButtonAppWidget(
-            label: 'Verificar a sua localização',
+            icon: const Icon(Icons.maps_ugc_outlined),
+            label: 'Localização',
             onPressed: () {
               Navigator.pushNamed(context, RoutesApp.map);
             },

@@ -74,7 +74,8 @@ class _MapScreenState extends State<MapScreen> {
                   onMapCreated: _onMapCreated,
                 ),
                 floatingActionButton: FloatingButtonAppWidget(
-                  label: 'Confirmar sua localização',
+                  icon: const Icon(Icons.check),
+                  label: 'Confirmar',
                   onPressed: () {
                     Navigator.pushNamed(context, RoutesApp.infoUser);
                   },

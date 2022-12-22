@@ -8,10 +8,12 @@ class FloatingButtonAppWidget extends StatelessWidget {
     Key? key,
     required this.label,
     required this.onPressed,
+    required this.icon,
   }) : super(key: key);
 
   String label;
   VoidCallback? onPressed;
+  Widget icon;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,7 @@ class FloatingButtonAppWidget extends StatelessWidget {
       onPressed: onPressed,
       backgroundColor: ColorsApp.blueDarck,
       label: Text(label),
+      icon: icon,
     );
   }
 }
