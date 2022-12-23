@@ -82,17 +82,28 @@ class _CheckedScreenState extends State<CheckedScreen> {
                             const Padding(
                               padding: EdgeInsets.all(20.0),
                               child: Text(
-                                'Seu pedido foi finalizado com sucesso e ele já está indo em direção a você, espere até a gente entrar em contato, caso demore muito para chegar entre em contato por esse número: ',
+                                'Seu pedido já está indo em direção a você, finalize a compra para comfirma o pedido, caso demore muito para chegar entre em contato por esse número: ',
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
                                   fontSize: 14,
                                 ),
                               ),
                             ),
+                            const Text(
+                              '9 8346-3984',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: ColorsApp.bluePrimary,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
                             ButtonAppWidget(
                               onPressed: () {
                                 final total = quantidade!['quantidade'] - 1;
-                                print(total);
 
                                 cubit.novoValorEstoque(total);
                               },

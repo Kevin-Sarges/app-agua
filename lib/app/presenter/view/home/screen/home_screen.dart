@@ -5,6 +5,7 @@ import 'package:appaguaentregados/app/presenter/global_widgets/ciruclar_progress
 import 'package:appaguaentregados/app/presenter/view/home/controller/home_cubit.dart';
 import 'package:appaguaentregados/app/presenter/view/home/controller/home_state.dart';
 import 'package:appaguaentregados/app/presenter/view/home/widgets/loading_estoque.dart';
+import 'package:appaguaentregados/app/presenter/view/home/widgets/text_header_home_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               flex: 3,
               child: Container(
-                height: 560,
                 decoration: const BoxDecoration(
                   gradient: ColorsApp.linearGradientBlue,
                   borderRadius: BorderRadius.only(
@@ -47,15 +47,39 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Center(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              TextHeaderHomeWidget(
+                                text: 'Troca: R\$ 8,00',
+                              ),
+                              TextHeaderHomeWidget(
+                                text: 'Novo: R\$ 16,00',
+                              )
+                            ],
+                          ),
+                          TextHeaderHomeWidget(
+                            text: 'Contato: 9 8346-3984',
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
                       const SizedBox(
                         width: 200,
                         child: Text(
                           'Quantidade de garrafões de água disponivel no estoque',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
