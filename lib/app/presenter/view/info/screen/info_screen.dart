@@ -86,7 +86,7 @@ class _InfoScreenState extends State<InfoScreen> {
                               lat: local.latitude,
                               lon: local.longitude,
                               finalizado: false,
-                              hora: DateTime.now().microsecond.toString(),
+                              hora: DateTime.now().millisecondsSinceEpoch.toString(),
                             ),
                           );
 
