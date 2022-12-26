@@ -63,7 +63,7 @@ class _MapScreenState extends State<MapScreen> {
               return Scaffold(
                 body: GoogleMap(
                   zoomControlsEnabled: false,
-                  mapType: MapType.satellite,
+                  mapType: MapType.hybrid,
                   myLocationEnabled: true,
                   initialCameraPosition: CameraPosition(
                     target: LatLng(
