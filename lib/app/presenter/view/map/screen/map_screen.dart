@@ -40,6 +40,7 @@ class _MapScreenState extends State<MapScreen> {
         appBar: AppBar(
           title: const Text('Localização'),
           backgroundColor: ColorsApp.bluePrimary,
+          automaticallyImplyLeading: false,
         ),
         body: BlocBuilder<MapCubit, MapState>(
           bloc: cubit,
@@ -69,7 +70,7 @@ class _MapScreenState extends State<MapScreen> {
                       state.lat,
                       state.lon,
                     ),
-                    zoom: 18,
+                    zoom: 20,
                   ),
                   onMapCreated: _onMapCreated,
                 ),
@@ -78,6 +79,12 @@ class _MapScreenState extends State<MapScreen> {
                   label: 'Confirmar',
                   onPressed: () {
                     Navigator.pushNamed(context, RoutesApp.infoUser);
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Localização registrada 🙂'),
+                      ),
+                    );
                   },
                 ),
               );
