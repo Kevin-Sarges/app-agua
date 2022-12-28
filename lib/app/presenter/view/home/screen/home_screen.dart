@@ -30,6 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final largura = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorsApp.blueLight,
@@ -123,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         quantidade['quantidade'] <= 0
                                             ? 'assets/images/sem-agua.png'
                                             : 'assets/images/garrafa-de-agua1.png',
-                                        width: 200,
+                                        width: largura * 0.50,
                                       ),
                                     ],
                                   );

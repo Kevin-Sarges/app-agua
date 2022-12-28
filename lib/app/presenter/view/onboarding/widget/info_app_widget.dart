@@ -20,6 +20,8 @@ class InfoAppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final largura = MediaQuery.of(context).size.width;
+
     return Center(
       child: SingleChildScrollView(
         child: Column(
@@ -39,7 +41,7 @@ class InfoAppWidget extends StatelessWidget {
             ),
             Image.asset(
               image,
-              width: 100,
+              width: largura * 0.30,
             ),
             const SizedBox(
               height: 20,

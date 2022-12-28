@@ -18,8 +18,11 @@ class CheckedScreen extends StatefulWidget {
 
 class _CheckedScreenState extends State<CheckedScreen> {
   final cubit = GetIt.I.get<CheckedCubit>();
+
   @override
   Widget build(BuildContext context) {
+    final largura = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorsApp.blueLight,
@@ -62,7 +65,7 @@ class _CheckedScreenState extends State<CheckedScreen> {
                         ),
                         Image.asset(
                           'assets/images/monitorando.png',
-                          width: 250,
+                          width: largura * 0.50,
                         ),
                       ],
                     ),
