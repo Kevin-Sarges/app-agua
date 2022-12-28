@@ -22,6 +22,7 @@ class _CheckedScreenState extends State<CheckedScreen> {
   @override
   Widget build(BuildContext context) {
     final largura = MediaQuery.of(context).size.width;
+    final altura = MediaQuery.of(context).size.height;
 
     return SafeArea(
       child: Scaffold(
@@ -66,6 +67,7 @@ class _CheckedScreenState extends State<CheckedScreen> {
                         Image.asset(
                           'assets/images/monitorando.png',
                           width: largura * 0.50,
+                          height: altura * 0.20,
                         ),
                       ],
                     ),

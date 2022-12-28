@@ -31,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final largura = MediaQuery.of(context).size.width;
+    final altura = MediaQuery.of(context).size.height;
 
     return SafeArea(
       child: Scaffold(
@@ -126,6 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ? 'assets/images/sem-agua.png'
                                             : 'assets/images/garrafa-de-agua1.png',
                                         width: largura * 0.50,
+                                        height: altura * 0.20,
                                       ),
                                     ],
                                   );
