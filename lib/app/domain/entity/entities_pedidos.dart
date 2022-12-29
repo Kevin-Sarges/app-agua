@@ -5,6 +5,8 @@ class EntitiesPedidos {
   double lon;
   bool finalizado;
   String hora;
+  String tipoPagamento;
+  String tipoEntrega;
 
   EntitiesPedidos({
     required this.nomeCliente,
@@ -13,5 +15,7 @@ class EntitiesPedidos {
     required this.lon,
     required this.finalizado,
     required this.hora,
+    required this.tipoEntrega,
+    required this.tipoPagamento,
   });
 }

@@ -9,6 +9,9 @@ class LoadingQtdAgua extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final largura = MediaQuery.of(context).size.width;
+    final altura = MediaQuery.of(context).size.height;
+
     return Center(
       child: Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
@@ -21,7 +24,8 @@ class LoadingQtdAgua extends StatelessWidget {
           ),
           Image.asset(
             'assets/images/garrafa-de-agua1.png',
-            width: 200,
+            width: largura * 0.50,
+            height: altura * 0.20,
           ),
         ],
       ),

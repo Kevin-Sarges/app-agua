@@ -9,6 +9,8 @@ class ModelPedidos extends EntitiesPedidos {
     required double lon,
     required bool finalizado,
     required String hora,
+    required String tipoPagamento,
+    required String tipoEntrega,
   }) : super(
           nomeCliente: nomeCliente,
           telefone: telefone,
@@ -16,6 +18,8 @@ class ModelPedidos extends EntitiesPedidos {
           lon: lon,
           finalizado: finalizado,
           hora: hora,
+          tipoEntrega: tipoEntrega,
+          tipoPagamento: tipoPagamento,
         );
 
   factory ModelPedidos.fronJson(DocumentSnapshot snapshot) {
@@ -28,6 +32,8 @@ class ModelPedidos extends EntitiesPedidos {
       lon: data['lon'] as double,
       finalizado: data['finalizado'] ?? false,
       hora: data['hora'] as String,
+      tipoEntrega: data['tipoEntrega'] as String,
+      tipoPagamento: data['tipoPagamento'] as String,
     );
   }
 
@@ -39,6 +45,8 @@ class ModelPedidos extends EntitiesPedidos {
       'lon': lon,
       'finalizado': finalizado,
       'hora': hora,
+      'tipoEntrega': tipoEntrega,
+      'tipoPagamento': tipoPagamento,
     };
 
     return data;
