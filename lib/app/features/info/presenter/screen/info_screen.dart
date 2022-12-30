@@ -5,7 +5,7 @@ import 'dart:developer';
 import 'package:appaguaentregados/app/common/utils/colors_app.dart';
 import 'package:appaguaentregados/app/common/utils/formas_pagamento.dart';
 import 'package:appaguaentregados/app/common/utils/tipo_entrega.dart';
-import 'package:appaguaentregados/app/common/global_widgets/button_app_widget.dart';
+import 'package:appaguaentregados/app/common/widgets/button_app_widget.dart';
 import 'package:appaguaentregados/app/features/info/data/model/info_model.dart';
 import 'package:appaguaentregados/app/features/info/presenter/controllers/info_cubit.dart';
 import 'package:appaguaentregados/app/features/info/presenter/controllers/info_state.dart';
