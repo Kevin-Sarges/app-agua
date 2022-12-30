@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
             if (state is HomeLoading) {
               return Center(
                 child: CircularProgressWidget(
-                  color: ColorsApp.white,
+                  color: ColorsApp.blueDarck,
                 ),
               );
             }
