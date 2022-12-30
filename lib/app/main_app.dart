@@ -1,5 +1,6 @@
 import 'package:appaguaentregados/app/common/utils/routes_app.dart';
 import 'package:appaguaentregados/app/features/info/presenter/screen/info_screen.dart';
+import 'package:appaguaentregados/app/features/map/presenter/screen/map_screen.dart';
 import 'package:appaguaentregados/app/features/onboarding/presenter/screen/onboarding_screen.dart';
 import 'package:appaguaentregados/app/features/splash/presenter/screen/splash_screen.dart';
 import 'package:appaguaentregados/app/features/home/presenter/screen/home_screen.dart';
@@ -17,7 +18,7 @@ class MainApp extends StatelessWidget {
         RoutesApp.onboarding: (context) => const OnboardingScreen(),
         RoutesApp.home: (context) => const HomeScreen(),
         RoutesApp.infoUser: (context) => const InfoScreen(),
-        // RoutesApp.map: (context) => const MapScreen(),
+        RoutesApp.map: (context) => const MapScreen(),
         // RoutesApp.checkedScreen: (context) => const CheckedScreen(),
       },
     );

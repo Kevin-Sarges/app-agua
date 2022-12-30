@@ -1,3 +1,5 @@
+import 'package:appaguaentregados/app/common/error/failure.dart';
+
 abstract class MapState {}
 
 class MapInitial extends MapState {}
@@ -12,7 +14,7 @@ class MapSucess extends MapState {
 }
 
 class MapError extends MapState {
-  String erro;
+  Failure erro;
 
   MapError(this.erro);
 }

@@ -1,9 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'dart:developer';
-
 import 'package:appaguaentregados/app/common/utils/colors_app.dart';
 import 'package:appaguaentregados/app/common/utils/formas_pagamento.dart';
+import 'package:appaguaentregados/app/common/utils/routes_app.dart';
 import 'package:appaguaentregados/app/common/utils/tipo_entrega.dart';
 import 'package:appaguaentregados/app/common/widgets/button_app_widget.dart';
 import 'package:appaguaentregados/app/features/info/data/model/info_model.dart';
@@ -45,8 +44,7 @@ class _InfoScreenState extends State<InfoScreen> {
         body: BlocListener<InfoCubit, InfoState>(
           listener: (context, state) {
             if (state is InfoSucess) {
-              // Navigator.pushNamed(context, RoutesApp.checkedScreen);
-              log('enviado');
+              Navigator.pushNamed(context, RoutesApp.checkedScreen);
               return;
             }
           },
