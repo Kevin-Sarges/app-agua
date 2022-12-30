@@ -3,22 +3,24 @@
 // import 'package:appaguaentregados/app/features/info/controllers/info_state.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 
-// class InfoCubit extends Cubit<InfoState> {
-//   InfoCubit(this.service) : super(InfoInitial());
+import 'package:appaguaentregados/app/features/info/data/model/info_model.dart';
+import 'package:appaguaentregados/app/features/info/domain/usecase/add_info_usecase.dart';
+import 'package:appaguaentregados/app/features/info/presenter/controllers/info_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-//   final IDbFirebase service;
+class InfoCubit extends Cubit<InfoState> {
+  InfoCubit({required this.addInfoUseCase}) : super(InfoInitial());
 
-//   Future<void> salvarDadosUsuario(ModelPedidos pedidos) async {
-//     emit(InfoLoading());
+  final AddInfoUseCase addInfoUseCase;
 
-//     try {
-//       await service.encomendaAgua(pedidos);
+  Future<void> salvarDadosUsuario(InfoModel pedidos) async {
+    emit(InfoLoading());
 
-//       emit(InfoSucess());
-//     } catch (e) {
-//       emit(
-//         InfoError(e.toString()),
-//       );
-//     }
-//   }
-// }
+    final result = await addInfoUseCase(pedidos);
+
+    emit(result.fold(
+      (erro) => InfoError(erro),
+      (sucess) => InfoSucess(),
+    ));
+  }
+}
