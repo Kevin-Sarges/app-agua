@@ -1,4 +1,4 @@
-import 'package:appaguaentregados/app/domain/inject/inject_dependency.dart';
+import 'package:appaguaentregados/app/common/inject/inject_dependecy.dart';
 import 'package:appaguaentregados/app/main_app.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
