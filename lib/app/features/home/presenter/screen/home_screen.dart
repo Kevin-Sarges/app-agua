@@ -1,6 +1,6 @@
-import 'package:appaguaentregados/app/common/global_widgets/button_app_widget.dart';
+import 'package:appaguaentregados/app/common/widgets/button_app_widget.dart';
 import 'package:appaguaentregados/app/common/utils/colors_app.dart';
-import 'package:appaguaentregados/app/common/global_widgets/ciruclar_progress_widget.dart';
+import 'package:appaguaentregados/app/common/widgets/ciruclar_progress_widget.dart';
 import 'package:appaguaentregados/app/common/utils/routes_app.dart';
 import 'package:appaguaentregados/app/features/home/presenter/controller/home_cubit.dart';
 import 'package:appaguaentregados/app/features/home/presenter/controller/home_state.dart';

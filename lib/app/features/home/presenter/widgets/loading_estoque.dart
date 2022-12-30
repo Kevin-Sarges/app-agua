@@ -1,5 +1,5 @@
 import 'package:appaguaentregados/app/common/utils/colors_app.dart';
-import 'package:appaguaentregados/app/common/global_widgets/ciruclar_progress_widget.dart';
+import 'package:appaguaentregados/app/common/widgets/ciruclar_progress_widget.dart';
 import 'package:flutter/material.dart';
 
 class LoadingQtdAgua extends StatelessWidget {
