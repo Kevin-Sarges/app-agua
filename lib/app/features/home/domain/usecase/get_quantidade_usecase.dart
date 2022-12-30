@@ -11,6 +11,6 @@ class GetQuantidadeUseCase {
   });
 
   Future<Either<Failure, List<HomeEntity>>> call() async {
-    return repository.getQuantidade();
+    return await repository.getQuantidade();
   }
 }

@@ -11,6 +11,6 @@ class AddInfoUseCase {
   });
 
   Future<Either<Failure, void>> call(InfoModel pedidos) async {
-    return repository.addInfo(pedidos);
+    return await repository.addInfo(pedidos);
   }
 }

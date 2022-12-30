@@ -11,6 +11,6 @@ class GetLocalUserCase {
   });
 
   Future<Either<Failure, Position>> call() async {
-    return repository.getLocal();
+    return await repository.getLocal();
   }
 }
