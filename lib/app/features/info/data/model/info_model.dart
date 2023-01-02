@@ -2,7 +2,6 @@ import 'package:appaguaentregados/app/features/info/domain/entity/info_entity.da
 
 class InfoModel extends InfoEntity {
   InfoModel({
-    required super.id,
     required super.nomeCliente,
     required super.telefone,
     required super.lat,
@@ -15,7 +14,6 @@ class InfoModel extends InfoEntity {
 
   factory InfoModel.fromJosn(Map<String, dynamic> json) {
     return InfoModel(
-      id: json['id'] ?? '',
       nomeCliente: json['nomeCliente'] as String,
       telefone: json['telefone'] as String,
       lat: json['lat'] as double,
@@ -29,7 +27,6 @@ class InfoModel extends InfoEntity {
 
   Map<String, dynamic> toJson() {
     final data = {
-      'id': id,
       'nomeCliente': nomeCliente,
       'telefone': telefone,
       'lat': lat,

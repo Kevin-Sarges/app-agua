@@ -152,9 +152,6 @@ class _InfoScreenState extends State<InfoScreen> {
 
                         cubit.salvarDadosUsuario(
                           InfoModel(
-                            id: DateTime.now()
-                                .microsecondsSinceEpoch
-                                .toString(),
                             nomeCliente: _textControllerName.text,
                             telefone: _textControllerPhone.text,
                             lat: local.latitude,

@@ -9,9 +9,9 @@ class InfoDataSource implements InfoDataSourceImpl {
   @override
   Future<void> addInfo(InfoModel pedido) {
     try {
-      final data = db.collection('entregas').add(pedido.toJson());
+      final result = db.collection('entregas').add(pedido.toJson());
 
-      return data;
+      return result;
     } on FirebaseException catch (e) {
       throw CommonDesconhecidoError(message: e.message);
     }
