@@ -1,4 +1,5 @@
 class InfoEntity {
+  String id;
   String nomeCliente;
   String telefone;
   double lat;
@@ -9,6 +10,7 @@ class InfoEntity {
   String tipoEntrega;
 
   InfoEntity({
+    required this.id,
     required this.nomeCliente,
     required this.telefone,
     required this.lat,
