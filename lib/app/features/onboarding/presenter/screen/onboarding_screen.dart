@@ -2,9 +2,8 @@
 
 import 'package:appaguaentregados/app/common/utils/colors_app.dart';
 import 'package:appaguaentregados/app/common/utils/routes_app.dart';
-import 'package:appaguaentregados/app/features/onboarding/presenter/widget/info_app_widget.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -14,133 +13,78 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  int _current = 0;
-  final CarouselController _carouselController = CarouselController();
+  PageDecoration _pageDecoration() {
+    return const PageDecoration(
+      pageColor: ColorsApp.bluePrimary,
+      titleTextStyle: TextStyle(
+        color: ColorsApp.white,
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
+      ),
+      bodyTextStyle: TextStyle(
+        color: ColorsApp.white,
+        fontSize: 15,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> infoWidget = [
-      InfoAppWidget(
-        key: Key(1.toString()),
-        title: '1ª Dica',
-        text:
-            'O app precisa de permissão para acessar a sua localização então não se esqueça de verificar a sua localização quando for comprar água no app.',
-        image: 'assets/images/map.png',
-        onPress: null,
-      ),
-      InfoAppWidget(
-        key: const Key('2'),
-        title: '2ª Dica',
-        text:
-            'Informe seu nome e número, o entregador entrará em contato com você caso seja necessário.',
-        image: 'assets/images/user.png',
-        onPress: null,
-      ),
-      InfoAppWidget(
-        key: const Key('3'),
-        title: '3ª Dica',
-        text:
-            'Caso tenha algum problema ou demora na entrega, você pode entra em contato direto com o fornecedor.',
-        image: 'assets/images/garrafa-de-agua.png',
-        onPress: () {
-          Navigator.pushNamed(context, RoutesApp.home);
-        },
-      ),
-    ];
+    final largura = MediaQuery.of(context).size.width;
 
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorsApp.bluePrimary,
-        body: Column(
-          children: [
-            Expanded(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                color: Colors.red,
-                child: CarouselSlider(
-                  carouselController: _carouselController,
-                  options: CarouselOptions(
-                    autoPlay: false,
-                    aspectRatio: 1,
-                    enlargeStrategy: CenterPageEnlargeStrategy.height,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        _current = index;
-                      });
-                    },
-                  ),
-                  items: infoWidget,
-                ),
+      child: IntroductionScreen(
+        showBackButton: true,
+        showNextButton: false,
+        back: const Icon(Icons.arrow_back),
+        pages: [
+          PageViewModel(
+            title: '1ª Dica',
+            body:
+                'O app precisa de permissão para acessar a sua localização então não se esqueça de verificar a sua localização quando for comprar água no app.',
+            image: Center(
+              child: Image.asset(
+                'assets/images/map.png',
+                width: largura * 0.30,
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: infoWidget.map(
-                (info) {
-                  final intKey = info.key;
-
-                  print('int $intKey');
-                  return Container(
-                    width: 8.0,
-                    height: 8.0,
-                    margin: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 4.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: (Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : ColorsApp.black)
-                          .withOpacity(
-                        _current == info.key ? 0.9 : 0.4,
-                      ),
-                    ),
-                  );
-                },
-              ).toList(),
-            )
-          ],
+            decoration: _pageDecoration(),
+          ),
+          PageViewModel(
+            title: '2ª Dica',
+            body:
+                'Informe seu nome e número, o entregador entrará em contato com você caso seja necessário.',
+            image: Center(
+              child: Image.asset(
+                'assets/images/user.png',
+                width: largura * 0.30,
+              ),
+            ),
+            decoration: _pageDecoration(),
+          ),
+          PageViewModel(
+            title: '3ª Dica',
+            body:
+                'Caso tenha algum problema ou demora na entrega, você pode entra em contato direto com o fornecedor.',
+            image: Center(
+              child: Image.asset(
+                'assets/images/garrafa-de-agua.png',
+                width: largura * 0.30,
+              ),
+            ),
+            decoration: _pageDecoration(),
+          ),
+        ],
+        done: const Text(
+          'Entrar',
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        // body: Center(
-        //   child: CarouselSlider(
-        //     carouselController: _carouselController,
-        //     options: CarouselOptions(
-        //       autoPlay: false,
-        //       aspectRatio: 1,
-        //       enlargeStrategy: CenterPageEnlargeStrategy.height,
-        //       onPageChanged: (index, reason) {
-        //         setState(() {
-        //           _current = index;
-        //         });
-        //       },
-        //     ),
-        //     items: [
-        //       InfoAppWidget(
-        //         title: '1ª Dica',
-        //         text:
-        //             'O app precisa de permissão para acessar a sua localização então não se esqueça de verificar a sua localização quando for comprar água no app.',
-        //         image: 'assets/images/map.png',
-        //         onPress: null,
-        //       ),
-        //       InfoAppWidget(
-        //         title: '2ª Dica',
-        //         text:
-        //             'Informe seu nome e número, o entregador entrará em contato com você caso seja necessário.',
-        //         image: 'assets/images/user.png',
-        //         onPress: null,
-        //       ),
-        //       InfoAppWidget(
-        //         title: '3ª Dica',
-        //         text:
-        //             'Caso tenha algum problema ou demora na entrega, você pode entra em contato direto com o fornecedor.',
-        //         image: 'assets/images/garrafa-de-agua.png',
-        //         onPress: () {
-        //           Navigator.pushNamed(context, RoutesApp.home);
-        //         },
-        //       ),
-        //     ],
-        //   ),
-        // ),
+        onDone: () {
+          Navigator.pushNamed(context, RoutesApp.home);
+        },
       ),
     );
   }
