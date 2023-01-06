@@ -44,7 +44,14 @@ class _InfoScreenState extends State<InfoScreen> {
         body: BlocListener<InfoCubit, InfoState>(
           listener: (context, state) {
             if (state is InfoSucess) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Salvo 🙂'),
+                ),
+              );
+
               Navigator.pushNamed(context, RoutesApp.checkedScreen);
+
               return;
             }
           },
@@ -96,7 +103,19 @@ class _InfoScreenState extends State<InfoScreen> {
                                       .map(
                                         (value) => DropdownMenuItem(
                                           value: value,
-                                          child: Text(value),
+                                          child: Row(
+                                            children: [
+                                              Image.asset(
+                                                value == 'PIX'
+                                                    ? 'assets/images/logo-pix.png'
+                                                    : 'assets/images/dinheiro.png',
+                                                width: 20,
+                                                height: 20,
+                                              ),
+                                              const SizedBox(width: 8),
+                                              Text(value)
+                                            ],
+                                          ),
                                         ),
                                       )
                                       .toList(),
@@ -125,7 +144,19 @@ class _InfoScreenState extends State<InfoScreen> {
                                       .map(
                                         (value) => DropdownMenuItem(
                                           value: value,
-                                          child: Text(value),
+                                          child: Row(
+                                            children: [
+                                              Image.asset(
+                                                value == 'Troca de Garrafão'
+                                                    ? 'assets/images/troca.png'
+                                                    : 'assets/images/garrafa-de-agua1.png',
+                                                width: 20,
+                                                height: 20,
+                                              ),
+                                              const SizedBox(width: 8),
+                                              Text(value)
+                                            ],
+                                          ),
                                         ),
                                       )
                                       .toList(),
@@ -162,12 +193,6 @@ class _InfoScreenState extends State<InfoScreen> {
                             hora: DateTime.now()
                                 .millisecondsSinceEpoch
                                 .toString(),
-                          ),
-                        );
-
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Salvo 🙂'),
                           ),
                         );
                       }
