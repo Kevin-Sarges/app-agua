@@ -34,19 +34,20 @@ class _InfoScreenState extends State<InfoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorsApp.blueLight,
-        appBar: AppBar(
-          title: const Text('Nome e Contato'),
-          backgroundColor: ColorsApp.bluePrimary,
-        ),
-        body: BlocListener<InfoCubit, InfoState>(
+    return Scaffold(
+      backgroundColor: ColorsApp.blueLight,
+      appBar: AppBar(
+        title: const Text('Nome e Contato'),
+        backgroundColor: ColorsApp.bluePrimary,
+      ),
+      body: SafeArea(
+        child: BlocListener<InfoCubit, InfoState>(
+          bloc: cubit,
           listener: (context, state) {
             if (state is InfoSucess) {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Salvo 🙂'),
+                  content: Text('Seus dados foram salvos 🙂'),
                 ),
               );
 
@@ -55,7 +56,6 @@ class _InfoScreenState extends State<InfoScreen> {
               return;
             }
           },
-          bloc: cubit,
           child: SingleChildScrollView(
             child: Container(
               padding: const EdgeInsets.all(20),
@@ -217,8 +217,8 @@ class _InfoScreenState extends State<InfoScreen> {
             ),
           ),
         ),
-        floatingActionButton: const FloatingButtonWidget(),
       ),
+      floatingActionButton: const FloatingButtonWidget(),
     );
   }
 }

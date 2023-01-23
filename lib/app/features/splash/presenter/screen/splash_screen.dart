@@ -29,25 +29,27 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorsApp.bluePrimary,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/images/garrafa-de-agua1.png',
-              width: 200,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const SizedBox(
-              width: 30,
-              child: LinearProgressIndicator(
-                color: ColorsApp.white,
-                minHeight: 3.5,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/garrafa-de-agua1.png',
+                width: 200,
               ),
-            )
-          ],
+              const SizedBox(
+                height: 20,
+              ),
+              const SizedBox(
+                width: 30,
+                child: LinearProgressIndicator(
+                  color: ColorsApp.white,
+                  minHeight: 3.5,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

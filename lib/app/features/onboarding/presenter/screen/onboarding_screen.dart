@@ -41,7 +41,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           PageViewModel(
             title: '1ª Dica',
             body:
-                'O app precisa de permissão para acessar a sua localização então não se esqueça de verificar a sua localização quando for comprar água no app.',
+                'O app precisa de permissão para acessar a sua localização então não se esqueça de verificar a sua localização quando for comprar água no app. Você só precisa fazer isso somente uma vez.',
             image: Center(
               child: Image.asset(
                 'assets/images/map.png',

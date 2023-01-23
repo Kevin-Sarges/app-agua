@@ -30,10 +30,10 @@ class _CheckedScreenState extends State<CheckedScreen> {
     final largura = MediaQuery.of(context).size.width;
     final altura = MediaQuery.of(context).size.height;
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorsApp.blueLight,
-        body: BlocBuilder<CheckedCubit, CheckedState>(
+    return Scaffold(
+      backgroundColor: ColorsApp.blueLight,
+      body: SafeArea(
+        child: BlocBuilder<CheckedCubit, CheckedState>(
           bloc: cubit,
           builder: (context, state) {
             if (state is CheckedLoading) {
@@ -129,7 +129,7 @@ class _CheckedScreenState extends State<CheckedScreen> {
                               );
                             },
                             text: const Text(
-                              'Finalizar compra',
+                              'Realizar compra',
                               style: TextStyle(
                                 fontSize: 16,
                               ),

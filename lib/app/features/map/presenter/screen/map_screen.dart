@@ -35,14 +35,14 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Localização'),
-          backgroundColor: ColorsApp.bluePrimary,
-          automaticallyImplyLeading: false,
-        ),
-        body: BlocBuilder<MapCubit, MapState>(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Localização'),
+        backgroundColor: ColorsApp.bluePrimary,
+        automaticallyImplyLeading: false,
+      ),
+      body: SafeArea(
+        child: BlocBuilder<MapCubit, MapState>(
           bloc: cubit,
           builder: (context, state) {
             if (state is MapLoading) {

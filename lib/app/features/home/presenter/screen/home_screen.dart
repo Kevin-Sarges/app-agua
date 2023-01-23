@@ -14,10 +14,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorsApp.blueLight,
-        body: Column(
+    return Scaffold(
+      backgroundColor: ColorsApp.blueLight,
+      body: SafeArea(
+        child: Column(
           children: [
             Expanded(
               flex: 3,
