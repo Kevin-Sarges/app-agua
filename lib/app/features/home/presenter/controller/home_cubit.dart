@@ -7,14 +7,11 @@ class HomeCubit extends Cubit<HomeState> {
 
   final GetQuantidadeUseCase getQuantidadeUseCase;
 
-  Future<void> quantidadeEstoque() async {
+  Stream<void> quantidadeEstoque() async* {
     emit(HomeLoading());
 
-    final result = await getQuantidadeUseCase();
+    getQuantidadeUseCase();
 
-    emit(result.fold(
-      (failure) => HomeErro(failure),
-      (sucess) => HomeSucess(sucess),
-    ));
+    emit(HomeSucess());
   }
 }
