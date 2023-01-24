@@ -12,13 +12,13 @@ class HomeRepository implements HomeRepositoryImpl {
   });
 
   @override
-  Stream<Either<Failure, List<HomeEntity>>> getQuantidade() async* {
+  Future<Either<Failure, Stream<List<HomeEntity>>>> getQuantidade() async {
     try {
-      final result = await dataSource.getQuantidade();
+      final result = dataSource.getQuantidade();
 
-      yield Right(result);
+      return Right(result);
     } on Failure catch (e) {
-      yield Left(e);
+      return Left(e);
     }
   }
 }

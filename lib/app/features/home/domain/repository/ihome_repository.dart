@@ -3,5 +3,5 @@ import 'package:appaguaentregados/app/features/home/domain/entity/home_entity.da
 import 'package:dartz/dartz.dart';
 
 abstract class HomeRepositoryImpl {
-  Stream<Either<Failure, List<HomeEntity>>> getQuantidade();
+  Future<Either<Failure, Stream<List<HomeEntity>>>> getQuantidade();
 }

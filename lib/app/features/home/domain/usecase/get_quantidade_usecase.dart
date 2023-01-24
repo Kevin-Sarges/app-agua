@@ -10,7 +10,7 @@ class GetQuantidadeUseCase {
     required this.repository,
   });
 
-  Stream<Either<Failure, List<HomeEntity>>> call() {
-    return repository.getQuantidade();
+  Future<Either<Failure, Stream<List<HomeEntity>>>> call() async {
+    return await repository.getQuantidade();
   }
 }

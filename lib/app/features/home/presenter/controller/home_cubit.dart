@@ -10,8 +10,11 @@ class HomeCubit extends Cubit<HomeState> {
   Stream<void> quantidadeEstoque() async* {
     emit(HomeLoading());
 
-    getQuantidadeUseCase();
+    final result = await getQuantidadeUseCase();
 
-    emit(HomeSucess());
+    emit(result.fold(
+      (failure) => HomeErro(failure),
+      (sucess) => HomeSucess(sucess),
+    ));
   }
 }
