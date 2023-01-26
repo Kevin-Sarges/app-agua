@@ -1,5 +1,6 @@
 import 'package:appaguaentregados/app/common/utils/colors_app.dart';
 import 'package:appaguaentregados/app/common/widgets/ciruclar_progress_widget.dart';
+import 'package:appaguaentregados/app/features/home/domain/entity/home_entity.dart';
 import 'package:appaguaentregados/app/features/home/presenter/controller/home_cubit.dart';
 import 'package:appaguaentregados/app/features/home/presenter/controller/home_state.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,7 @@ class _QtdEstoqueWidgetState extends State<QtdEstoqueWidget> {
         }
 
         if (state is HomeSucess) {
-          return StreamBuilder(
+          return StreamBuilder<List<HomeEntity>>(
             stream: state.quantidade,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
@@ -87,36 +88,7 @@ class _QtdEstoqueWidgetState extends State<QtdEstoqueWidget> {
           );
         }
 
-        return StreamBuilder(
-          stream: cubit.quantidadeEstoque(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              final quantidadeEstoque = snapshot.data?.first.quantidade;
-
-              return Column(
-                children: [
-                  Text(
-                    '$quantidadeEstoque',
-                    style: const TextStyle(
-                      color: ColorsApp.white,
-                      fontSize: 90,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Image.asset(
-                    quantidadeEstoque! <= 0
-                        ? 'assets/images/sem-agua.png'
-                        : 'assets/images/garrafa-de-agua1.png',
-                    width: largura * 0.50,
-                    height: altura * 0.20,
-                  ),
-                ],
-              );
-            }
-
-            return Container();
-          },
-        );
+        return Container();
       },
     );
   }

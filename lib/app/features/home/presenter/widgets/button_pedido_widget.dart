@@ -84,40 +84,7 @@ class _ButtonPedidoWidgetState extends State<ButtonPedidoWidget> {
           );
         }
 
-        return StreamBuilder<List<HomeEntity>>(
-          stream: cubit.quantidadeEstoque(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              final quantidadeEstoque = snapshot.data?.first.quantidade;
-
-              return ButtonAppWidget(
-                onPressed: quantidadeEstoque! <= 0
-                    ? null
-                    : () {
-                        Navigator.pushNamed(
-                          context,
-                          RoutesApp.infoUser,
-                        );
-                      },
-                text: const Text(
-                  'Compra água',
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorsApp.blueDarck,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 9,
-                    horizontal: 54,
-                  ),
-                ),
-              );
-            }
-
-            return Container();
-          },
-        );
+        return Container();
       },
     );
   }
