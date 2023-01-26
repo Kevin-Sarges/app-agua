@@ -30,8 +30,13 @@ class _QtdEstoqueWidgetState extends State<QtdEstoqueWidget> {
     final largura = MediaQuery.of(context).size.width;
     final altura = MediaQuery.of(context).size.height;
 
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocConsumer<HomeCubit, HomeState>(
       bloc: cubit,
+      listener: (context, state) {
+        if (state is HomeSucess) {
+          return;
+        }
+      },
       builder: (context, state) {
         if (state is HomeLoading) {
           return Expanded(
@@ -50,30 +55,68 @@ class _QtdEstoqueWidgetState extends State<QtdEstoqueWidget> {
         }
 
         if (state is HomeSucess) {
-          final quantidadeEstoque = state.quantidade.first.quantidade;
+          return StreamBuilder(
+            stream: state.quantidade,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final quantidadeEstoque = snapshot.data?.first.quantidade;
 
-          return Column(
-            children: [
-              Text(
-                '$quantidadeEstoque',
-                style: const TextStyle(
-                  color: ColorsApp.white,
-                  fontSize: 90,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Image.asset(
-                quantidadeEstoque <= 0
-                    ? 'assets/images/sem-agua.png'
-                    : 'assets/images/garrafa-de-agua1.png',
-                width: largura * 0.50,
-                height: altura * 0.20,
-              ),
-            ],
+                return Column(
+                  children: [
+                    Text(
+                      '$quantidadeEstoque',
+                      style: const TextStyle(
+                        color: ColorsApp.white,
+                        fontSize: 90,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Image.asset(
+                      quantidadeEstoque! <= 0
+                          ? 'assets/images/sem-agua.png'
+                          : 'assets/images/garrafa-de-agua1.png',
+                      width: largura * 0.50,
+                      height: altura * 0.20,
+                    ),
+                  ],
+                );
+              }
+
+              return Container();
+            },
           );
         }
 
-        return Container();
+        return StreamBuilder(
+          stream: cubit.quantidadeEstoque(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              final quantidadeEstoque = snapshot.data?.first.quantidade;
+
+              return Column(
+                children: [
+                  Text(
+                    '$quantidadeEstoque',
+                    style: const TextStyle(
+                      color: ColorsApp.white,
+                      fontSize: 90,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Image.asset(
+                    quantidadeEstoque! <= 0
+                        ? 'assets/images/sem-agua.png'
+                        : 'assets/images/garrafa-de-agua1.png',
+                    width: largura * 0.50,
+                    height: altura * 0.20,
+                  ),
+                ],
+              );
+            }
+
+            return Container();
+          },
+        );
       },
     );
   }
