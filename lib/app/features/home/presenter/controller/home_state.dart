@@ -8,7 +8,7 @@ class HomeInitial extends HomeState {}
 class HomeLoading extends HomeState {}
 
 class HomeSucess extends HomeState {
-  List<HomeEntity> quantidade;
+  Stream<List<HomeEntity>> quantidade;
 
   HomeSucess(this.quantidade);
 }

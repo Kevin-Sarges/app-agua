@@ -6,19 +6,23 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeDataSource implements HomeDataSourceImpl {
   @override
-  Future<List<HomeEntity>> getQuantidade() async {
+  Stream<List<HomeEntity>> getQuantidade() {
     final db = FirebaseFirestore.instance;
 
     try {
-      final data = await db.collection('estoque').get();
+      final data = db.collection('estoque').snapshots();
 
-      final result = data.docs.map((doc) {
-        final data = doc.data();
+      final result = data.map((event) {
+        final docs = event.docs;
 
-        return HomeModel(
-          quantidade: data['quantidade'],
-        );
-      }).toList();
+        return docs.map((doc) {
+          final data = doc.data();
+
+          return HomeModel(
+            quantidade: data['quantidade'],
+          );
+        }).toList();
+      });
 
       return result;
     } on FirebaseException catch (e) {

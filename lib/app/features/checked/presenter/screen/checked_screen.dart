@@ -71,7 +71,7 @@ class _CheckedScreenState extends State<CheckedScreen> {
                             const SizedBox(
                               width: 200,
                               child: Text(
-                                'Produto está acaminho',
+                                'Confirma compra do pedido',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 24,
@@ -97,8 +97,8 @@ class _CheckedScreenState extends State<CheckedScreen> {
                           const Padding(
                             padding: EdgeInsets.all(20.0),
                             child: Text(
-                              'Seu pedido já está indo em direção a você, finalize a compra para comfirma o pedido, caso demore muito para chegar entre em contato por esse número: ',
-                              textAlign: TextAlign.justify,
+                              'Caso demore muito para o seu pedido chegar entre em contato por esse número: ',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 14,
                               ),
