@@ -83,7 +83,13 @@ class _QtdEstoqueWidgetState extends State<QtdEstoqueWidget> {
                 );
               }
 
-              return Container();
+              return Center(
+                child: Center(
+                  child: CircularProgressWidget(
+                    color: ColorsApp.white,
+                  ),
+                ),
+              );
             },
           );
         }

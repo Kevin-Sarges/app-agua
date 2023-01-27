@@ -79,7 +79,11 @@ class _ButtonPedidoWidgetState extends State<ButtonPedidoWidget> {
                 );
               }
 
-              return Container();
+              return Center(
+                child: CircularProgressWidget(
+                  color: ColorsApp.blueDarck,
+                ),
+              );
             },
           );
         }
