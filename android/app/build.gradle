@@ -28,14 +28,16 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
-/*if(project.hasProperty('dart-defines')) {
-    dartEnvironmentVaribles = dartEnvironmentVaribles + project.property('dart-defines')
+def dartEnvironmentVariables = []
+
+if (project.hasProperty('dart-defines')) {
+    dartEnvironmentVariables = project.property('dart-defines')
         .split(',')
         .collectEntries { entry ->
-            def pair = new String(entry.docodeBase64(), 'UTF-8').split('=')
-            [(pair.first()): pair.last()] 
+            def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
+            [(pair.first()): pair.last()]
         }
-}*/
+}
 
 android {
     compileSdkVersion 33
@@ -55,15 +57,17 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        manifestPlaceholders = [
+            ANDROID_MAPS_APIKEY: dartEnvironmentVariables.ANDROID_MAPS_APIKEY
+        ]
+        
         applicationId "com.appagua.appaguaentregados"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 20
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
+        resValue "string", "ANDROID_MAPS_APIKEY", dartEnvironmentVariables.ANDROID_MAPS_APIKEY
     }
 
     buildTypes {
