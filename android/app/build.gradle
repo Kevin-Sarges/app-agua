@@ -56,11 +56,7 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    defaultConfig {
-        manifestPlaceholders = [
-            ANDROID_MAPS_APIKEY: dartEnvironmentVariables.ANDROID_MAPS_APIKEY
-        ]
-        
+    defaultConfig {    
         applicationId "com.appagua.appaguaentregados"
         minSdkVersion 20
         targetSdkVersion flutter.targetSdkVersion
@@ -75,6 +71,10 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+            manifestPlaceholders = [
+                ANDROID_MAPS_APIKEY: dartEnvironmentVariables.ANDROID_MAPS_APIKEY,
+                applicationName: "com.appagua.appaguaentregados"
+            ]
         }
     }
 }
