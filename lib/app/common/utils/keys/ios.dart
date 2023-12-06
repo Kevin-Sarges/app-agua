@@ -1,5 +1,6 @@
 class KeysIosApp {
-  static const apiKeyIOS = String.fromEnvironment('IOS_MAPS_APIKEY');
+  static const mapsKeyIOS = String.fromEnvironment('IOS_MAPS_APIKEY');
+  static const apiKeyIOS = String.fromEnvironment('IOS_APIKEY');
   static const appIdIOS = String.fromEnvironment('IOS_APPID_KEY');
   static const messagingIOS = String.fromEnvironment('IOS_MESSAGING_KEY');
   static const projectIdIOS = String.fromEnvironment('IOS_PROJECTID_KEY');

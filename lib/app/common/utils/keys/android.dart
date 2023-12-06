@@ -1,5 +1,6 @@
 class KeysAndroidApp {
-  static const apiKeyAndroid = String.fromEnvironment('ANDROID_MAPS_APIKEY');
+  static const mapsKeyAndroid = String.fromEnvironment('ANDROID_MAPS_APIKEY');
+  static const apiKeyAndroid = String.fromEnvironment('ANDROID_APIKEY');
   static const appIdAndroid = String.fromEnvironment('ANDROID_APPID_KEY');
   static const messagingAndroid =
       String.fromEnvironment('ANDROID_MESSAGING_KEY');

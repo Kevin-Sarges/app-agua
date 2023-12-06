@@ -28,6 +28,15 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+/*if(project.hasProperty('dart-defines')) {
+    dartEnvironmentVaribles = dartEnvironmentVaribles + project.property('dart-defines')
+        .split(',')
+        .collectEntries { entry ->
+            def pair = new String(entry.docodeBase64(), 'UTF-8').split('=')
+            [(pair.first()): pair.last()] 
+        }
+}*/
+
 android {
     compileSdkVersion 33
     ndkVersion flutter.ndkVersion
